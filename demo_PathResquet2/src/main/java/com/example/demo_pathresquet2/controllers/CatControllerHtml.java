@@ -40,7 +40,7 @@ public class CatControllerHtml {
             return catsList;
         }
 
-        @GetMapping("/api/v1/details/{id}")
+        @GetMapping( "/api/v1/details/{id}")
         @ResponseBody
         public CatService apiCatsDetails(@PathVariable Long id) {
             return getCatById(id);
