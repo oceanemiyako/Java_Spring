@@ -1,7 +1,8 @@
 package com.example.exo1.controllers;
 
-import ch.qos.logback.core.model.Model;
+
 import com.example.exo1.models.Person;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
