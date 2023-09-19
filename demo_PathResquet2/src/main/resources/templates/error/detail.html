@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<h1>Cats Details</h1>
+<ul>
+    <li><strong>ID:</strong> <span th:text="${cats.id}"></span></li>
+    <li><strong>Name:</strong> <span th:text="${cats.name}"></span></li>
+    <li><strong>Breed:</strong> <span th:text="${cats.breed}"></span></li>
+    <li><strong>Age:</strong> <span th:text="${cats.age}"></span></li>
+
+</ul>
+<a th:href="@{/cats/listing}">Back to Listing</a>
+</body>
+</html>
