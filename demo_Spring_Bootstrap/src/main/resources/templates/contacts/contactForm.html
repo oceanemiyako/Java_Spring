@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${(mode.equals('details') ? 'View' : 'Add') + ' a Contact'}"></title>
+    <span th:replace="~{home :: bootstrapImports}"></span>
+
+</head>
+<body>
+
+<header th:insert="~{home :: nav}"></header>
+<main class="container">
+    <h1 th:text="${(mode.equals('details') ? 'View' : 'Add') + ' a Contact'}"></h1>
+    <hr>
+    <form action="#" th:action="@{/contacts/add}" method="post" th:object="${contact}">
+        <input type="text" class="d-none" th:field="*{id}" readonly>
+        <div class="mb-3">
+            <label for="lastname" class="form-label">LastName:</label>
+            <input type="text" id="lastname" class="form-control" th:field="*{lastname}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
+        </div>
+
+        <div class="mb-3">
+            <label for="firstname" class="form-label">Firstname:</label>
+            <input type="text" id="firstname" class="form-control" th:field="*{firstname}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" id="email" class="form-control" th:field="*{email}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone:</label>
+            <input type="text" id="phone" class="form-control" th:field="*{phone}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
+        </div>
+
+        <div class="text-end">
+            <a th:if="${mode.equals('details')}" class="btn btn-secondary" th:href="@{/contacts}"><i class="bi bi-arrow-counterclockwise"></i> Return</a>
+            <button th:unless="${mode.equals('details')}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add a Contact</button>
+        </div>
+    </form>
+</main>
+
+
+
+
+
+</body>
+</html>
