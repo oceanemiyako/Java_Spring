@@ -65,4 +65,10 @@ public class ContactController {
 
         return "redirect:/contacts";
     }
+
+    @PostMapping("/delete/{contactId}")
+    public String deleteContactById(@PathVariable("contactId") UUID id) {
+
+        return "redirect:/contacts";
+    }
 }

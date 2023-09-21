@@ -10,20 +10,73 @@
     </th:block>
 </head>
 <body>
-<header>
-    <nav class="blabla">
-        <ul>
-            <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/contacts}">Contacts</a></li>
-        </ul>
-    </nav>
+
+<header class="text-center my-12">
+    <h1>Bienvenue sur ma Page</h1>
 </header>
-<main class="container">
-    <h1 class="fw-light">Home Page</h1>
-    <hr>
-    <p>
-    Voici une page d'accueil
-    </p>
-</main>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg" data-bs-theme="dark">
+    <a class="navbar-brand" href="#">Ohayo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav">
+
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/contacts}">Contacts</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--<header>-->
+<!--    <nav class="blabla text-center">-->
+<!--        <ul>-->
+<!--            <li><a th:href="@{/}">Home</a></li>-->
+<!--            <li><a th:href="@{/contacts}">Contacts</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--</header>-->
+
+<section id="culture" class="container my-5">
+    <h2 class="text-center">Bonne lecture</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Découvrez une richesse d'histoire et la culture fascinante du Japon.</p>
+        </div>
+        <div class="col-md-12 text-center">
+            <img src="https://i.pinimg.com/originals/fe/cc/20/fecc20eaa5617052dcb26d3834658960.gif" alt="Image de la culture japonaise" width="250" height="120" class="img-fluid rounded">
+        </div>
+    </div>
+</section>
+
+<section id="yokai" class="bg-light container my-5">
+    <h2 class="text-center">Yokaï</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Explorez les histoires des Yokaï, créatures mythique de la culture Shitoisme.</p>
+        </div>
+        <div class="col text-center">
+            <img src="https://pm1.aminoapps.com/6905/13e9a547364851cff8a481e489eec9856e885cbbr1-600-337v2_hq.jpg" alt="yokai" width="250" height="120" class="img-fluid rounded">
+        </div>
+    </div>
+</section>
+
+<section id="voyages" class="container my-5">
+    <h2 class="text-center">Animes</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Voyager avec les animées japonais.</p>
+        </div>
+        <div class="col-md-12 text-center">
+            <img src="https://leclaireur.fnac.com/wp-content/uploads/2023/06/oni-no-ko.jpg" alt="Ao no" width="250" height="120" class="img-fluid rounded">
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
