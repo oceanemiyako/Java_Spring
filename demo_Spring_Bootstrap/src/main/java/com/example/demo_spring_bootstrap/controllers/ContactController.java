@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -66,9 +67,18 @@ public class ContactController {
         return "redirect:/contacts";
     }
 
-    @PostMapping("/delete/{contactId}")
+    @PostMapping("/delete")
     public String deleteContactById(@PathVariable("contactId") UUID id) {
+
+        contactService.deleteContactById(id);
 
         return "redirect:/contacts";
     }
+
+    @PostMapping("/edit")
+    public String updateContact(@PathVariable("contactId") UUID id, @ModelAttribute("contact") ContactDTO contact) {
+        contactService.editContact(updateContact(id));
+        return "redirect:/contacts/";
+    }
+
 }
