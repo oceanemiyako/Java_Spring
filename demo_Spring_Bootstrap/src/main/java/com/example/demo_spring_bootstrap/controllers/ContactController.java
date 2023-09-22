@@ -67,17 +67,25 @@ public class ContactController {
         return "redirect:/contacts";
     }
 
-    @PostMapping("/delete")
+    @GetMapping("/delete/{contactId}")
     public String deleteContactById(@PathVariable("contactId") UUID id) {
 
         contactService.deleteContactById(id);
-
         return "redirect:/contacts";
     }
 
-    @PostMapping("/edit")
+    @GetMapping("/edit/{contactId}")
+    public String editPersonForm(Model model, @PathVariable UUID contactId) {
+        model.addAttribute("contact", contactService.getContactsById(contactId).get());
+        model.addAttribute("mode", "edit");
+
+        return "contacts/contactForm";
+    }
+
+
+    @PostMapping("/edit/{contactId}")
     public String updateContact(@PathVariable("contactId") UUID id, @ModelAttribute("contact") ContactDTO contact) {
-        contactService.editContact(updateContact(id));
+        contactService.editContact(id, contact);
         return "redirect:/contacts/";
     }
 

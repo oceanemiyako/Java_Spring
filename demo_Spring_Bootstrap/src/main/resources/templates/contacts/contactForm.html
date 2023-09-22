@@ -10,10 +10,18 @@
 
 <header th:insert="~{home :: nav}"></header>
 <main class="container">
-    <h1 th:text="${(mode.equals('details') ? 'View' : 'Add') + ' a Contact'}"></h1>
+<!--    <h1 th:text="${(mode.equals('details') ? 'View' : 'Add') + ' a Contact'}"></h1>-->
+    <h1 th:switch="${mode}">
+        <span th:case="details">View a contact</span>
+        <span th:case="add">Add a contact</span>
+        <span th:case="delete">Delete a contact</span>
+        <span th:case="edit">Edit a contact</span>
+    </h1>
     <hr>
     <form action="#" th:action="@{/contacts/add}" method="post" th:object="${contact}">
         <input type="text" class="d-none" th:field="*{id}" readonly>
+
+
         <div class="mb-3">
             <label for="lastname" class="form-label">LastName:</label>
             <input type="text" id="lastname" class="form-control" th:field="*{lastname}" th:readonly="${mode.equals('details')}" th:required="${mode.equals('add')}">
@@ -36,11 +44,17 @@
 
         <div class="text-end">
             <a th:if="${mode.equals('details')}" class="btn btn-secondary" th:href="@{/contacts}"><i class="bi bi-arrow-counterclockwise"></i> Return</a>
-            <button th:unless="${mode.equals('details')}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add a Contact</button>
+<!--            <button th:unless="${mode.equals('details')}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add a Contact</button>-->
+            <th:block th:switch="${mode}">
+                <button th:case="add" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add a person</button>
+                <button th:case="delete" class="btn btn-danger"><i class="bi bi-x-lg"></i> Delete</button>
+                <button th:case="edit" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i> Edit </button>
+            </th:block>
         </div>
 
     </form>
 </main>
+
 
 </body>
 </html>

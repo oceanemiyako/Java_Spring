@@ -32,9 +32,10 @@
             <td th:text="${d.phone}"></td>
 
             <td>
+
                 <a th:href="@{/contacts/{contactId}(contactId=${d.id})}" class="btn btn-outline-info"><i class="bi bi-eye"></i> Details</a>
-                <a th:href="@{/contacts/delete}" class="btn btn-outline-danger"><i class="bi bi-trash3"></i> Delete a Contact</a>
-                <a th:href="@{/contacts/edit}" class="btn btn-outline-warning"><i class="bi bi-pen"></i> Edit a Contact</a>
+                <a th:href="@{/contacts/delete/{contactId}(contactId=${d.id})}" class="btn btn-outline-danger"><i class="bi bi-trash3"></i> Delete a Contact</a>
+                <a th:href="@{/contacts/edit/{contactId}(contactId=${d.id})}" class="btn btn-outline-warning"><i class="bi bi-pen"></i> Edit a Contact</a>
 
             </td>
         </tr>
