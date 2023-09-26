@@ -33,12 +33,40 @@ import lombok.Data;
 @Builder
 public class PokemonDTO {
 
+    @Data
+    @Builder
+    public static class AbilitySummary {
+        private Integer slot;
+        private Boolean is_hidden;
+        private Ability ability;
+    }
 
-    private List<String> abilities = new ArrayList<>();
+    @Data
+    @Builder
+    public static class Ability {
+        private String name;
+        private String url;
+    }
+
+    @Data
+    @Builder
+    public static class TypeSummary {
+        private Integer slot;
+        private Type type;
+    }
+
+    @Data
+    @Builder
+    public static class Type {
+        private String name;
+        private String url;
+    }
+
+    private  List<String> abilities = new ArrayList<>();
 
     private String name;
-    private Long id;
-    private List<String> types;
+    private Integer id;
+    private List<TypeSummary> types;
     private String imageUrl;
     private Integer height;
     private Integer weight;

@@ -10,7 +10,7 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 @Configuration
 public class RestTemplateBuilderConfig {
 
-    @Value("${base.url.pokeApi}")
+    @Value("${{base.pokeApi.url}")
     private String rootUrl;
 
     @Bean

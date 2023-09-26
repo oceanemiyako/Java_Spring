@@ -18,60 +18,72 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PokemonService {
 
-    private final RestTemplateBuilder builder;
+//    private final RestTemplateBuilder builder;
+//
+//    public ResponseEntity<String> getPostsString() {
+//        RestTemplate restTemplate = builder.build();
+//
+//        ResponseEntity<String> entityString = restTemplate
+//                .getForEntity("https://pokeapi.co/api/v2/pokemon", String.class);
+//
+//        return entityString;
+//    }
+//
+//
+//    public PokemonDTO getPokemon(String name) {
+//        RestTemplate restTemplate = builder.build();
+//
+//        ResponseEntity<JsonNode> responseJson = restTemplate
+//                .getForEntity("pokemon/" + name, JsonNode.class);
+//
+//        List<String> abilityNames = new ArrayList<>();
+//
+//        String nameFound = responseJson.getBody().get("name").asText();
+//
+//        responseJson.getBody().findPath("abilities").elements().forEachRemaining(a -> {
+//            abilityNames.add(a.findPath("ability").get("name").asText());
+//        });
+//
+//        return PokemonDTO
+//                .builder()
+//                .abilities(abilityNames)
+//                .build();
+//    }
+//
+//
+//    public Integer getPokemonCount() {
+//        RestTemplate restTemplate = builder.build();
+//
+//        ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokedex", JsonNode.class);
+//
+//        if (responseEntity.getBody() != null) {
+//            return responseEntity.getBody().get("pokemon").size();
+//        }
+//        return null;
+//    }
+//
+//
+//    private final RestTemplateBuilder restTemplateBuilder;
+//
+//    public PokemonDTO getPokemonDetails(String value) {
+//        RestTemplate restTemplate = restTemplateBuilder.build();
+//
+//        ResponseEntity<PokemonDTO> response = restTemplate.getForEntity("/pokemon/" + value, PokemonDTO.class);
+//        String formattedId = String.format("%03d", response.getBody().getId());
+//        response.getBody().setId(Integer.parseInt(formattedId));
+//        return response.getBody();
+//    }
 
-    public ResponseEntity<String> getPostsString() {
-        RestTemplate restTemplate = builder.build();
+    private final RestTemplateBuilder restTemplateBuilder;
 
-        ResponseEntity<String> entityString = restTemplate
-                .getForEntity("https://pokeapi.co/api/v2/pokemon", String.class);
+    public PokemonDTO getPokemonDetails(String value) {
+        RestTemplate restTemplate = restTemplateBuilder.build();
 
-        return entityString;
+        ResponseEntity<PokemonDTO> response = restTemplate.getForEntity("/pokemon/" + value, PokemonDTO.class);
+        String formattedId = String.format("%03d", response.getBody().getId());
+        response.getBody().setId(Integer.parseInt(formattedId));
+        return response.getBody();
     }
 
-
-    public PokemonDTO getPokemon(String name) {
-        RestTemplate restTemplate = builder.build();
-
-        ResponseEntity<JsonNode> responseJson = restTemplate
-                .getForEntity("pokemon/" + name, JsonNode.class);
-
-        List<String> abilityNames = new ArrayList<>();
-
-        String nameFound = responseJson.getBody().get("name").asText();
-
-        responseJson.getBody().findPath("abilities").elements().forEachRemaining(a -> {
-            abilityNames.add(a.findPath("ability").get("name").asText());
-        });
-
-        return PokemonDTO
-                .builder()
-                .abilities(abilityNames)
-                .build();
-    }
-
-
-    public Integer getPokemonCount() {
-        RestTemplate restTemplate = builder.build();
-
-        ResponseEntity<JsonNode> responseEntity = restTemplate.getForEntity("pokedex", JsonNode.class);
-
-        if (responseEntity.getBody() != null) {
-            return responseEntity.getBody().get("pokemon").size();
-        }
-        return null;
-    }
-
-    public Long getGameIndex(Long id){
-    RestTemplate restTemplate = builder.build();
-
-    ResponseEntity<JsonNode> responseEntity = restTemplate
-            .getForEntity("pokemon/" + id , JsonNode.class);
-
-
-
-
-        return null;
-    }
 
 }
